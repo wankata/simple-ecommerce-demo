@@ -6,7 +6,10 @@ services:
     env_file: db.env
   web:
     build: .
-    command: python3 manage.py runserver 0.0.0.0:8000
+    command:
+      ./vendor/wait-for-it/wait-for-it.sh -s db:3306
+      --
+      python3 manage.py runserver 0.0.0.0:8000
     env_file: web.env
     volumes:
       - .:/code

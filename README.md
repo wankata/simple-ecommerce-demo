@@ -6,7 +6,7 @@ Simple e-commerce demo project written on Python with Django and MySQL
 Prerequisites
 ------------------------------
 
-You need to have [Docker CE](https://docs.docker.com/install/ "Install Docker CE") and [Docker
+You need to have [Git](https://git-scm.com/), [Docker CE](https://docs.docker.com/install/ "Install Docker CE") and [Docker
 Compose](https://docs.docker.com/compose/install/ "Install Docker Compose") installed.
 
 In the following examples, I assume, that your docker environment needs root privilegues to work properly. If it doesn't
@@ -17,10 +17,18 @@ something doesn't suits you.
 Installation and configuration
 ------------------------------
 
-First of all you need to setup your environment properly. Copy the **db.env.tmpl** and **web.env.tmpl** files in
-**db.env** and **web.env** and edit them corresponding to your environment. These files contain sensitive data such as
-passwords and secret keys, so you want to keep them secret. But don't worry, the **.env* files are listed in the
-*.gitignore*.
+First of all you need to clone the repository and initialize it's submodules:
+
+    $ git clone --recurse-submodules https://github.com/wankata/simple-ecommerce-demo.git
+
+If you already have cloned the repo without --recurse-submodules, you need to:
+
+    $ git submodule init
+    $ git submodule update
+
+Then you need to setup your environment properly. Copy the **db.env.tmpl** and **web.env.tmpl** files in **db.env** and
+**web.env** and edit them corresponding to your environment. These files contain sensitive data such as passwords and
+secret keys, so you want to keep them secret. But don't worry, the **.env* files are listed in the *.gitignore*.
 
 Now you are ready to start the docker environment. At the first run, it will last a little bit longer, because of the
 initial image setup.
@@ -62,7 +70,5 @@ You should use the **get_env_variable()** utility method for this, just like:
 
 Known issues
 ------------
-  * The first time you run *$ sudo docker-compose up*, django dev server may run before the database is initialized, so
-    you may need to restart it after db is alive and kicking.
   * ecommerce.wsgi is not properly configured. If you want to run django in production with wsgi, you need to set the
     correct DJANGO_SETTINGS_MODULE
