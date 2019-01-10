@@ -60,13 +60,25 @@ In the settings package, you will find:
   It includes specific settings, used in your development environment.
   * **production.py**
   It includes specific settings, used in production.
-  
+
 Be careful not to put sensitive data directly in the setting files. Use the environment variables for this!
 You should use the **get_env_variable()** utility method for this, just like:
 
     SECRET_KEY = get_env_variable('SECRET_KEY')
 
 **NB!:** Don't forget to put the newly added environment variables in the .tmpl files.
+
+About code style
+----------------
+
+We use flake8 with default configuration for code checks.
+
+If you want to exclude some code from the checs, because they are not appropriate, you should consider the following
+conventions:
+  * Exclude code only when it is really OK and it won't be fixed
+  * Exclude only specific codes and not all checks, e.g.:
+
+        # noqa: E501
 
 Known issues
 ------------
