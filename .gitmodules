@@ -1,0 +1,3 @@
+[submodule "vendor/wait-for-it"]
+	path = vendor/wait-for-it
+	url = https://github.com/vishnubob/wait-for-it.git
