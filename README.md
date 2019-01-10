@@ -26,13 +26,14 @@ If you already have cloned the repo without --recurse-submodules, you need to:
     $ git submodule init
     $ git submodule update
 
-Then you need to setup your environment properly. Copy the **db.env.tmpl** and **web.env.tmpl** files in **db.env** and
-**web.env** and edit them corresponding to your environment. These files contain sensitive data such as passwords and
+Then you need to setup your environment properly. Copy the **./environment/db.env.tmpl** and **./environment/web.env.tmpl** files in **./environment/db.env** and
+**./environment/web.env** and edit them corresponding to your environment. These files contain sensitive data such as passwords and
 secret keys, so you want to keep them secret. But don't worry, the **.env* files are listed in the *.gitignore*.
 
 Now you are ready to start the docker environment. At the first run, it will last a little bit longer, because of the
 initial image setup.
 
+    $ cd ./environment/
     $ sudo docker-compose up
 
 When the environment is up and running, log in on the web server and run the migrations needed:
