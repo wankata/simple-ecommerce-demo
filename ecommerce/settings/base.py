@@ -12,7 +12,8 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 from django.core.exceptions import ImproperlyConfigured
- 
+
+
 def get_env_variable(var_name):
     try:
         return os.environ[var_name]
@@ -20,7 +21,8 @@ def get_env_variable(var_name):
         error_msg = "You need to set the %s environment variable" % var_name
         raise ImproperlyConfigured(error_msg)
 
-ADMINS = [('Ivan Ivanov', 'wankata@ivanovi.net'),]
+
+ADMINS = [('Ivan Ivanov', 'wankata@ivanovi.net')]
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -94,16 +96,16 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',  # noqa: E501
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',  # noqa: E501
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',  # noqa: E501
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',  # noqa: E501
     },
 ]
 
