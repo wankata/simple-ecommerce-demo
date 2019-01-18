@@ -7,3 +7,6 @@ class Category(models.Model):
                                on_delete=models.CASCADE,
                                blank=True,
                                null=True)
+
+    class Meta:
+        unique_together = ("title", "parent")
