@@ -10,6 +10,9 @@ class Category(MPTTModel):
                             null=True,
                             verbose_name="Parent category")
 
+    def __str__(self):
+        return self.title
+
     class Meta:
         unique_together = ("title", "parent")
         verbose_name_plural = "Categories"
