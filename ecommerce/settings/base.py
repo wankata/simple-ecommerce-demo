@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # third party apps
+    'mptt',
     # our own apps
     'catalogue.apps.CatalogueConfig',
 ]
