@@ -6,7 +6,8 @@ class Category(models.Model):
     parent = models.ForeignKey('self',
                                on_delete=models.CASCADE,
                                blank=True,
-                               null=True)
+                               null=True,
+                               verbose_name="Parent category")
 
     class Meta:
         unique_together = ("title", "parent")
