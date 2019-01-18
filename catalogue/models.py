@@ -10,3 +10,4 @@ class Category(models.Model):
 
     class Meta:
         unique_together = ("title", "parent")
+        verbose_name_plural = "Categories"
