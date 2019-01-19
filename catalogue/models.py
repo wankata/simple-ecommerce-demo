@@ -3,6 +3,7 @@ from mptt.models import MPTTModel, TreeForeignKey
 from djmoney.models.fields import MoneyField
 from djmoney.models.validators import MinMoneyValidator
 
+
 class Category(MPTTModel):
     title = models.CharField(max_length=100)
     parent = TreeForeignKey('self',
@@ -17,6 +18,7 @@ class Category(MPTTModel):
     class Meta:
         unique_together = ('title', 'parent')
         verbose_name_plural = 'Categories'
+
 
 class Product(models.Model):
     title = models.CharField(max_length=100)
