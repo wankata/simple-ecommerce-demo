@@ -92,3 +92,5 @@ Known issues
     and define it's dependencies. Basicly to explain how to work with django-money, currencies and exchange rates.
   * Currently we allow only BGN currency to be used. If we want to have a multy currency site, we need to make use of
     djmoney.contrib.exchange and to extend our apps to use it properly.
+  * Django-money doesn't represent the BGN really right. I am not really convinced that it is the best choice for
+    working with money.
