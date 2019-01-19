@@ -1,6 +1,6 @@
 from django.contrib import admin
 from mptt.admin import DraggableMPTTAdmin
-from .models import Category
+from .models import Category, Product
 
 admin.site.register(Category,
                     DraggableMPTTAdmin,
@@ -10,3 +10,5 @@ admin.site.register(Category,
                     ),
                     list_display_links=(
                         'indented_title',))
+
+admin.site.register(Product)

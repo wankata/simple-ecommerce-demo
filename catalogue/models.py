@@ -1,6 +1,6 @@
 from django.db import models
 from mptt.models import MPTTModel, TreeForeignKey
-
+from djmoney.models.fields import MoneyField
 
 class Category(MPTTModel):
     title = models.CharField(max_length=100)
@@ -16,3 +16,12 @@ class Category(MPTTModel):
     class Meta:
         unique_together = ("title", "parent")
         verbose_name_plural = "Categories"
+
+class Product(models.Model):
+    title = models.CharField(max_length=100)
+    category = TreeForeignKey(Category, on_delete=models.CASCADE)
+    price = MoneyField(max_digits=13, decimal_places=4)
+    description = models.TextField(blank=True)
+
+    class Meta:
+        unique_together = ("title", "category")
