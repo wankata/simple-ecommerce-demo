@@ -23,5 +23,8 @@ class Product(models.Model):
     price = MoneyField(max_digits=13, decimal_places=4)
     description = models.TextField(blank=True)
 
+    def __str__(self):
+        return self.title
+
     class Meta:
         unique_together = ('title', 'category')
