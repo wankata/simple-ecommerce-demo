@@ -8,14 +8,14 @@ class Category(MPTTModel):
                             on_delete=models.CASCADE,
                             blank=True,
                             null=True,
-                            verbose_name="Parent category")
+                            verbose_name='Parent category')
 
     def __str__(self):
         return self.title
 
     class Meta:
-        unique_together = ("title", "parent")
-        verbose_name_plural = "Categories"
+        unique_together = ('title', 'parent')
+        verbose_name_plural = 'Categories'
 
 class Product(models.Model):
     title = models.CharField(max_length=100)
@@ -24,4 +24,4 @@ class Product(models.Model):
     description = models.TextField(blank=True)
 
     class Meta:
-        unique_together = ("title", "category")
+        unique_together = ('title', 'category')
