@@ -85,3 +85,10 @@ Known issues
 ------------
   * ecommerce.wsgi is not properly configured. If you want to run django in production with wsgi, you need to set the
     correct DJANGO_SETTINGS_MODULE
+  * There is no clearsessions cron job for clearing expired sessions in the backend. Implement this in production to
+    prevent unmanaged db growth.
+  * Make sure to change SESSION_COOKIE_SECURE to true when https is implemented.
+  * To make the Catalogue app really reusable, we need to write in-app documentation about the configuration it needs
+    and define it's dependencies. Basicly to explain how to work with django-money, currencies and exchange rates.
+  * Currently we allow only BGN currency to be used. If we want to have a multy currency site, we need to make use of
+    djmoney.contrib.exchange and to extend our apps to use it properly.
