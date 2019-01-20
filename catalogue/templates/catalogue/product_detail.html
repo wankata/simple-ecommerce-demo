@@ -3,11 +3,19 @@
 {% load thumbnail i18n %}
 
 {% block content_title %}
-  <h2>{{ product.title }}</h2>
+  <h2 class="mt-4">
+    {{ product.title }}
+    <span class="float-right badge badge-info">{{ product.price }}</span>
+  </h2>
 {% endblock content_title %}
 
 {% block content %}
-  {{ product.price }}
-  {{ product.description }}
-  <img src="{{ product.image.medium.url }}" alt="Product image">
+  <div class="row mt-5">
+    <div class="col-6">
+      <img src="{{ product.image.medium.url }}" alt="Product image">
+    </div>
+    <div class="col-6 font-weight-light">
+      {{ product.description }}
+    </div>
+  </div>
 {% endblock content %}
