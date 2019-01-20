@@ -1,0 +1,9 @@
+a.card:hover,
+a.card:focus {
+  text-decoration: none;
+}
+
+a.bg-light:hover,
+a.bg-light:focus {
+    background-color: #f0f0f0 !important;
+}

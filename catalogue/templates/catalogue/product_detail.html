@@ -1,0 +1,13 @@
+{% extends "catalogue/base.html" %}
+
+{% load thumbnail i18n %}
+
+{% block content_title %}
+  <h2>{{ product.title }}</h2>
+{% endblock content_title %}
+
+{% block content %}
+  {{ product.price }}
+  {{ product.description }}
+  <img src="{{ product.image.medium.url }}" alt="Product image">
+{% endblock content %}

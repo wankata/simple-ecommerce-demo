@@ -1,5 +1,5 @@
 from django.views.generic import DetailView
-from .models import Category
+from .models import Category, Product
 
 
 class CategoryDetail(DetailView):
@@ -10,3 +10,8 @@ class CategoryDetail(DetailView):
         context = super().get_context_data(**kwargs)
         context["products"] = self.get_object().product_set.all()
         return context
+
+
+class ProductDetail(DetailView):
+    model = Product
+    context_object_name = 'product'

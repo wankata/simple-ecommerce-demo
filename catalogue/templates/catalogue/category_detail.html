@@ -12,17 +12,17 @@
       <div class="category_product card-deck">
     {% endif %}
 
-    <div class="card bg-light mb-4 col-3 pl-0 pr-0">
-      <img class="card-img-top" src="{{ product.image.small.url }}" alt="Product image">
-      <div class="card-body">
-        <h6 class="title card-title text-muted">
-          {{ product.title }}
-        </h6>
-      </div>
-      <div class="price card-footer">
-        <span class="text-muted">{{ product.price }}</span>
-      </div>
-    </div>
+    <a class="card bg-light mb-4 col-3 pl-0 pr-0" href="{% url "catalogue-product-detail" product.id %}">
+        <img class="card-img-top" src="{{ product.image.small.url }}" alt="Product image">
+        <div class="card-body">
+          <h6 class="title card-title text-muted">
+            {{ product.title }}
+          </h6>
+        </div>
+        <div class="price card-footer">
+          <span class="text-muted">{{ product.price }}</span>
+        </div>
+    </a>
 
     {% if forloop.counter|divisibleby:4 %}
       {# close the previous card-deck and create another one #}
