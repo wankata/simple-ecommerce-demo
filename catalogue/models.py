@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 
 from mptt.models import MPTTModel, TreeForeignKey
@@ -17,6 +17,9 @@ class Category(MPTTModel):
                             blank=True,
                             null=True,
                             verbose_name=_('Parent category'))
+
+    def get_absolute_url(self):
+        return reverse('catalogue-category-detail',  args=[str(self.id)])
 
     def __str__(self):
         return self.title
