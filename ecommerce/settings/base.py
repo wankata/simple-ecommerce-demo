@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'mptt',
     'djmoney',
     'easy_thumbnails',
+    'bootstrap4',
     # our own apps
     'catalogue.apps.CatalogueConfig',
 ]
@@ -152,7 +153,7 @@ CURRENCIES = ('BGN',)
 # easy_thumbnails configuration
 THUMBNAIL_ALIASES = {
     '': {
-        'small': {'size': (100, 100), 'crop': 'smart'},
-        'medium': {'size': (500, 0), 'crop': 'smart'},
+        'small': {'size': (300, 300), 'crop': 'smart'},
+        'medium': {'size': (1000, 0), 'crop': 'smart'},
     },
 }

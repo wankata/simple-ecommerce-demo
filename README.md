@@ -96,3 +96,5 @@ Known issues
     working with money.
   * We probably want to have an in-app settings to preconfigure things like THUMBNAIL_ALIASES suitable for the default
     app templates.
+  * The templates are not really responsive. We use the same column count nevertheless the device width.
+  * When you have less items on a row, the card width increases.

@@ -4,6 +4,7 @@ from .models import Category
 
 class CategoryDetail(DetailView):
     model = Category
+    context_object_name = 'category'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

@@ -1,5 +1,41 @@
-{% for product in products %}
-  {{ product.title }}
-  {{ product.price }}
-  <br>
-{% endfor %}
+{% extends "catalogue/base.html" %}
+
+{% load thumbnail i18n %}
+
+{% block content_title %}
+  <h2>{{ category.title }}</h2>
+{% endblock content_title %}
+
+{% block content %}
+  {% for product in products %}
+    {% if forloop.first %}
+      <div class="category_product card-deck">
+    {% endif %}
+
+    <div class="card bg-light mb-4 col-3 pl-0 pr-0">
+      <img class="card-img-top" src="{{ product.image.small.url }}" alt="Product image">
+      <div class="card-body">
+        <h6 class="title card-title text-muted">
+          {{ product.title }}
+        </h6>
+      </div>
+      <div class="price card-footer">
+        <span class="text-muted">{{ product.price }}</span>
+      </div>
+    </div>
+
+    {% if forloop.counter|divisibleby:4 %}
+      {# close the previous card-deck and create another one #}
+      </div>
+      <div class="category_product card-deck">
+    {% endif %}
+    {% if forloop.last %}
+      {# close the last opened card-deck #}
+      </div>
+    {% endif %}
+  {% empty %}
+    <div class="alert alert-danger" role="alert">
+      {% trans "There are no products in the selected category." %}
+    </div>
+  {% endfor %}
+{% endblock content %}
