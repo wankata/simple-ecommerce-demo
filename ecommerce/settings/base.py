@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     # third party apps
     'mptt',
     'djmoney',
+    'easy_thumbnails',
     # our own apps
     'catalogue.apps.CatalogueConfig',
 ]
@@ -146,3 +147,12 @@ MEDIA_URL = '/media/'
 DEFAULT_CURRENCY = 'BGN'
 
 CURRENCIES = ('BGN',)
+
+
+# easy_thumbnails configuration
+THUMBNAIL_ALIASES = {
+    '': {
+        'small': {'size': (100, 100), 'crop': 'smart'},
+        'medium': {'size': (500, 0), 'crop': 'smart'},
+    },
+}

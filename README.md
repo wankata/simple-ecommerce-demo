@@ -94,3 +94,5 @@ Known issues
     djmoney.contrib.exchange and to extend our apps to use it properly.
   * Django-money doesn't represent the BGN really right. I am not really convinced that it is the best choice for
     working with money.
+  * We probably want to have an in-app settings to preconfigure things like THUMBNAIL_ALIASES suitable for the default
+    app templates.
