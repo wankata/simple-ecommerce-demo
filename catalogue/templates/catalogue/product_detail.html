@@ -1,6 +1,6 @@
 {% extends "catalogue/base.html" %}
 
-{% load i18n %}
+{% load static i18n %}
 
 {% block content_title %}
   <h2 class="mt-4">
@@ -10,9 +10,12 @@
 {% endblock content_title %}
 
 {% block content %}
+
+  {% static "catalogue/images/no_photo.png" as no_photo %}
+
   <div class="row mt-5">
     <div class="col-6">
-      <img src="{{ product.image.medium.url }}" alt="{% trans "Product image" %}">
+      <img src="{{ product.image.medium.url|default:no_photo }}" alt="{% trans "Product image" %}">
     </div>
     <div class="col-6 font-weight-light">
       {{ product.description }}
