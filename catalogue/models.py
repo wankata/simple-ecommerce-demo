@@ -1,5 +1,7 @@
 from django.db import models
 
+from django.utils.translation import gettext_lazy as _
+
 from mptt.models import MPTTModel, TreeForeignKey
 
 from djmoney.models.fields import MoneyField
@@ -14,14 +16,14 @@ class Category(MPTTModel):
                             on_delete=models.CASCADE,
                             blank=True,
                             null=True,
-                            verbose_name='Parent category')
+                            verbose_name=_('Parent category'))
 
     def __str__(self):
         return self.title
 
     class Meta:
         unique_together = ('title', 'parent')
-        verbose_name_plural = 'Categories'
+        verbose_name_plural = _('Categories')
 
 
 class Product(models.Model):
