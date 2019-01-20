@@ -27,6 +27,7 @@ class Product(models.Model):
                        decimal_places=4,
                        validators=[MinMoneyValidator(0)])
     description = models.TextField(blank=True)
+    image = models.ImageField(upload_to='products', blank=True)
 
     def __str__(self):
         return self.title
