@@ -51,9 +51,9 @@
                   {% endif %}
                   {% ifequal node category %}
                     {% if not node.is_leaf_node %}
-                      <span class="caret current">{{ node.title }}</span>
+                      <span class="caret"></span><a class="current" href="{{ node.get_absolute_url }}">{{ node.title }}</a>
                     {% else %}
-                      <span class="leaf current">{{ node.title }}</span>
+                      <span class="leaf"></span><a class="current" href="{{ node.get_absolute_url }}">{{ node.title }}</a>
                     {% endif %}
                   {% else %}
                     {% if not node.is_leaf_node %}
