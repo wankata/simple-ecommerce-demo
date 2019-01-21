@@ -81,6 +81,21 @@ conventions:
 
         # noqa: E501
 
+Catalogue app
+----------------
+
+The Catalogue app exposes a category tree and the related to them products. It makes use of
+[django-mptt](https://github.com/django-mptt/django-mptt) for the category tree,
+[django-money](https://github.com/django-money/django-money) for the product's price,
+[easy-thumbnails](https://github.com/SmileyChris/easy-thumbnails) for the product's image and
+[django-bootstrap4](https://github.com/zostera/django-bootstrap4) for the layout.
+
+If you need the category menu outside the Catalogue app, take a look at the *menu block* inside the base.html. You will
+need the small script inside the *extra_body block*, related to that menu, too.
+
+If you want to change the look and feel of the catalogue, feel free to override it's default templates inside your
+project's template dir.
+
 Known issues
 ------------
   * ecommerce.wsgi is not properly configured. If you want to run django in production with wsgi, you need to set the
@@ -98,3 +113,4 @@ Known issues
     app templates.
   * The templates are not really responsive. We use the same column count nevertheless the device width.
   * When you have less items on a row, the card width increases.
+  * All strings are marked as translatable, but no real localisation is implemented yet.
