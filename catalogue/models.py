@@ -38,6 +38,9 @@ class Product(models.Model):
     description = models.TextField(blank=True)
     image = ThumbnailerImageField(upload_to='products', blank=True)
 
+    def get_absolute_url(self):
+        return reverse('catalogue-product-detail',  args=[str(self.id)])
+
     def __str__(self):
         return self.title
 

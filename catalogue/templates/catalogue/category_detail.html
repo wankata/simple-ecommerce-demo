@@ -15,7 +15,7 @@
       <div class="category_product card-deck">
     {% endif %}
 
-    <a class="card bg-light mb-4 col-4 pl-0 pr-0" href="{% url "catalogue-product-detail" product.id %}">
+    <a class="card bg-light mb-4 col-4 pl-0 pr-0" href="{{ product.get_absolute_url }}">
       <img class="card-img-top" src="{{ product.image.small.url|default:no_photo }}" alt="{% trans "Product image" %}">
         <div class="card-body">
           <h6 class="title card-title text-muted">
