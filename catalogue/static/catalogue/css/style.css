@@ -1,0 +1,59 @@
+/* Product list styles */
+div.card a:hover,
+div.card a:focus {
+  text-decoration: none;
+}
+
+div.bg-light:hover,
+div.bg-light:focus {
+    background-color: #f0f0f0 !important;
+}
+
+/* Category menu style */
+
+nav > ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul a, nav ul .current {
+    color: #5c5c5c;
+    text-decoration: none;
+}
+
+nav ul .current {
+    font-weight: bold;
+}
+
+.caret {
+  cursor: pointer;
+}
+
+.caret::before {
+  content: "\2192";
+  color: black;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.leaf::before {
+  content: "\2022";
+  color: black;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+
+.caret-down::before {
+  transform: rotate(90deg);
+}
+
+nav ul ul {
+  list-style-type: none;
+  display: none;
+}
+
+nav ul.active {
+  display: block !important;
+}

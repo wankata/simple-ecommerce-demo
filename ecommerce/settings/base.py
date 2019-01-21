@@ -43,6 +43,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # third party apps
+    'mptt',
+    'djmoney',
+    'easy_thumbnails',
+    'bootstrap4',
+    # our own apps
+    'catalogue.apps.CatalogueConfig',
 ]
 
 MIDDLEWARE = [
@@ -60,7 +67,7 @@ ROOT_URLCONF = 'ecommerce.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -128,3 +135,25 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+# User uploaded media files.
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+
+# djmoney settings
+
+DEFAULT_CURRENCY = 'BGN'
+
+CURRENCIES = ('BGN',)
+
+
+# easy_thumbnails configuration
+THUMBNAIL_ALIASES = {
+    '': {
+        'small': {'size': (300, 300), 'crop': 'smart'},
+        'medium': {'size': (400, 0), 'crop': 'smart'},
+    },
+}

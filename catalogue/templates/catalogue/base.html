@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+{% load static bootstrap4 i18n mptt_tags %}
+<html>
+  <head>
+
+    <title>
+      {% block title %}
+        {% trans "Catalogue app" %}
+      {% endblock %}
+    </title>
+
+    {% block extra_head %}
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+      {% bootstrap_css %}
+
+      <link rel="stylesheet" type="text/css" href="{% static "catalogue/css/style.css" %}">
+
+    {% endblock extra_head %}
+
+  </head>
+
+  <body>
+    {% block body %}
+
+      <div class="container">
+
+        {% block header %}
+          <div class="row mb-5">
+            <h1>{% trans "Catalogue app" %}</h1>
+          </div>
+        {% endblock header %}
+
+        <div class="row">
+          <nav class="col-3">
+            {% block menu %}
+              {% with current_path=category.get_ancestors %}
+                {% full_tree_for_model catalogue.Category as categories %}
+                {% for node,structure in categories|tree_info %}
+                  {% if structure.new_level %}
+                    {% if node == category %}
+                      <ul class="active">
+                    {% else %}
+                      <ul>
+                    {% endif %}
+                    <li>
+                  {% else %}
+                    </li><li>
+                  {% endif %}
+                  {% ifequal node category %}
+                    {% if not node.is_leaf_node %}
+                      <span class="caret"></span><a class="current" href="{{ node.get_absolute_url }}">{{ node.title }}</a>
+                    {% else %}
+                      <span class="leaf"></span><a class="current" href="{{ node.get_absolute_url }}">{{ node.title }}</a>
+                    {% endif %}
+                  {% else %}
+                    {% if not node.is_leaf_node %}
+                      {% if node in current_path %}
+                        <span class="caret caret-down"></span><a href="{{ node.get_absolute_url }}">{{ node.title }}</a>
+                      {% else %}
+                        <span class="caret"></span><a href="{{ node.get_absolute_url }}">{{ node.title }}</a>
+                      {% endif %}
+                    {% else %}
+                      <span class="leaf"></span><a href="{{ node.get_absolute_url }}">{{ node.title }}</a>
+                    {% endif %}
+                  {% endifequal %}
+                  {% for level in structure.closed_levels %}</li></ul>{% endfor %}
+                {% endfor %}
+              {% endwith %}
+            {% endblock menu %}
+          </nav>
+
+          <div class="col-9">
+            {% block content_title %}{% endblock %}
+
+            {% block content %}{% endblock content %}
+          </div>
+          {# ends .row (surrounding menu, content_title, content) #}
+        </div>
+
+        {% block footer %}{% endblock %}
+        {# ends .container #}
+      </div>
+
+    {% endblock body %}
+
+    {% block extra_body %}
+      {% bootstrap_javascript jquery='full' %}
+
+      <script>
+       $(".current").parents("ul").attr("class", "active");
+       $(".caret").click(function () {
+         $(this).parent().children("ul").toggleClass("active");
+         $(this).toggleClass("caret-down");
+       })
+      </script>
+    {% endblock extra_body %}
+  </body>
+
+</html>

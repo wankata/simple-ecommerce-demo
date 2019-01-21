@@ -1,0 +1,47 @@
+{% extends "catalogue/base.html" %}
+
+{% load static i18n %}
+
+{% block content_title %}
+  <h2>{{ category.title }}</h2>
+{% endblock content_title %}
+
+{% block content %}
+
+  {% static "catalogue/images/no_photo.png" as no_photo %}
+
+  {% for product in products %}
+    {% if forloop.first %}
+      <div class="category_product card-deck">
+    {% endif %}
+
+    <div class="card bg-light mb-4 col-4 pl-0 pr-0">
+      <a href="{{ product.get_absolute_url }}">
+        <img class="card-img-top" src="{{ product.image.small.url|default:no_photo }}" alt="{% trans "Product image" %}">
+      </a>
+      <a class="card-body" href="{{ product.get_absolute_url }}">
+        <h6 class="title card-title text-muted">
+          {{ product.title }}
+        </h6>
+      </a>
+      <div class="price card-footer">
+        <span class="text-muted">{{ product.price }}</span>
+        {% block basket %}{% endblock %}
+      </div>
+    </div>
+
+    {% if forloop.counter|divisibleby:3 %}
+      {# close the previous card-deck and create another one #}
+      </div>
+      <div class="category_product card-deck">
+    {% endif %}
+    {% if forloop.last %}
+      {# close the last opened card-deck #}
+      </div>
+    {% endif %}
+  {% empty %}
+    <div class="alert alert-danger" role="alert">
+      {% trans "There are no products in the selected category." %}
+    </div>
+  {% endfor %}
+{% endblock content %}

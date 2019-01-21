@@ -81,7 +81,40 @@ conventions:
 
         # noqa: E501
 
+Catalogue app
+----------------
+
+The Catalogue app exposes a category tree and the related to them products. It makes use of
+[django-mptt](https://github.com/django-mptt/django-mptt) for the category tree,
+[django-money](https://github.com/django-money/django-money) for the product's price,
+[easy-thumbnails](https://github.com/SmileyChris/easy-thumbnails) for the product's image and
+[django-bootstrap4](https://github.com/zostera/django-bootstrap4) for the layout.
+
+If you need the category menu outside the Catalogue app, take a look at the *menu block* inside the base.html. You will
+need the small script inside the *extra_body block*, related to that menu, too.
+
+If you want to change the look and feel of the catalogue, feel free to override it's default templates inside your
+project's template dir.
+
+The Catalogue app is a simple brochure. If you need it to be a part of an online store, you may want to integrate it
+with your basket. The *category_detail.html* provides you with a *basket block* for that purpose. You need to extend the
+template, override the basket block and you are ready! All other styles will remain as by default.
+
 Known issues
 ------------
   * ecommerce.wsgi is not properly configured. If you want to run django in production with wsgi, you need to set the
     correct DJANGO_SETTINGS_MODULE
+  * There is no clearsessions cron job for clearing expired sessions in the backend. Implement this in production to
+    prevent unmanaged db growth.
+  * Make sure to change SESSION_COOKIE_SECURE to true when https is implemented.
+  * To make the Catalogue app really reusable, we need to write in-app documentation about the configuration it needs
+    and define it's dependencies. Basicly to explain how to work with django-money, currencies and exchange rates.
+  * Currently we allow only BGN currency to be used. If we want to have a multy currency site, we need to make use of
+    djmoney.contrib.exchange and to extend our apps to use it properly.
+  * Django-money doesn't represent the BGN really right. I am not really convinced that it is the best choice for
+    working with money.
+  * We probably want to have an in-app settings to preconfigure things like THUMBNAIL_ALIASES suitable for the default
+    app templates.
+  * The templates are not really responsive. We use the same column count nevertheless the device width.
+  * When you have less items on a row, the card width increases.
+  * All strings are marked as translatable, but no real localisation is implemented yet.
