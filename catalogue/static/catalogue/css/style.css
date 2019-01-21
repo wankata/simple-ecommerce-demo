@@ -1,12 +1,15 @@
-a.card:hover,
-a.card:focus {
+/* Product list styles */
+div.card a:hover,
+div.card a:focus {
   text-decoration: none;
 }
 
-a.bg-light:hover,
-a.bg-light:focus {
+div.bg-light:hover,
+div.bg-light:focus {
     background-color: #f0f0f0 !important;
 }
+
+/* Category menu style */
 
 nav > ul {
   list-style-type: none;
