@@ -154,6 +154,6 @@ CURRENCIES = ('BGN',)
 THUMBNAIL_ALIASES = {
     '': {
         'small': {'size': (300, 300), 'crop': 'smart'},
-        'medium': {'size': (550, 0), 'crop': 'smart'},
+        'medium': {'size': (400, 0), 'crop': 'smart'},
     },
 }

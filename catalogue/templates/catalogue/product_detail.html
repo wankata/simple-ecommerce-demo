@@ -15,7 +15,7 @@
 
   <div class="row mt-5">
     <div class="col-6">
-      <img src="{{ product.image.medium.url|default:no_photo }}" alt="{% trans "Product image" %}">
+      <img style="width: 100%;" src="{{ product.image.medium.url|default:no_photo }}" alt="{% trans "Product image" %}">
     </div>
     <div class="col-6 font-weight-light">
       {{ product.description }}
