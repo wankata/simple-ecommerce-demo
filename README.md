@@ -96,6 +96,10 @@ need the small script inside the *extra_body block*, related to that menu, too.
 If you want to change the look and feel of the catalogue, feel free to override it's default templates inside your
 project's template dir.
 
+The Catalogue app is a simple brochure. If you need it to be a part of an online store, you may want to integrate it
+with your basket. The *category_detail.html* provides you with a *basket block* for that purpose. You need to extend the
+template, override the basket block and you are ready! All other styles will remain as by default.
+
 Known issues
 ------------
   * ecommerce.wsgi is not properly configured. If you want to run django in production with wsgi, you need to set the
